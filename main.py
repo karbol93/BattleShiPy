@@ -1,4 +1,5 @@
 import pygame, sys, os
+from Game import Game
 
 WINDOW_NAME = "BattleShiPy game"
 SCREEN_SIZE = (500, 500)
@@ -10,8 +11,5 @@ if __name__ == "__main__":
 	pygame.display.set_caption(WINDOW_NAME)
 	pygame.display.set_mode(SCREEN_SIZE)
 	
-	while True:
-		for event in pygame.event.get():
-			if event.type == pygame.QUIT:
-				sys.exit(0)
-		pygame.display.flip()
+	game = Game()
+	game.run()

@@ -19,6 +19,14 @@ class Game:
 		pass
 		
 	
+	def draw_gui(self):
+		pass
+		
+		
+	def draw_background(self):
+		pass
+		
+	
 	def draw_objects(self):
 		for object in self.drawableObjects:
 			image = pygame.transform.rotate(object.image, object.rotation)
@@ -29,7 +37,9 @@ class Game:
 		
 		
 	def draw(self):
-		self.draw_objects
+		self.draw_background()
+		self.draw_gui()
+		self.draw_objects()
 		pygame.display.flip()
 		
 		

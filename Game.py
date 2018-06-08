@@ -1,5 +1,6 @@
 import pygame
 from DrawableObject import DrawableObject
+from GameBoard import GameBoard
 
 class Game:
 	
@@ -7,7 +8,7 @@ class Game:
 		self.exit = False
 		self.screen = pygame.display.get_surface()
 		self.drawableObjects = [ ]
-		
+		self.userBoard = GameBoard()
 
 	def event_loop(self):
 		for event in pygame.event.get():
@@ -36,10 +37,19 @@ class Game:
 			self.screen.blit(image, imageRectangle)
 		
 		
+	def draw_userBoard(self):
+		for fields in self.userBoard.getFields():
+			for field in fields:
+				img = field.image
+				x,y = field.x,field.y
+				self.screen.blit(img,(x,y))
+			
+			
 	def draw(self):
 		self.draw_background()
 		self.draw_gui()
 		self.draw_objects()
+		self.draw_userBoard()
 		pygame.display.flip()
 		
 		

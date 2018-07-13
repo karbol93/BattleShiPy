@@ -1,15 +1,26 @@
 import pygame
+import sys
 
 class About:
 
     def __init__(self):
         self.done = False
+        self.screen= pygame.display.get_surface()
+
+    def key_down_event(self, key):
+        if key == pygame.K_ESCAPE:
+            self.done = True
 
     def event_loop(self):
-        pass
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit(0)
+            elif event.type == pygame.KEYDOWN:
+                self.key_down_event(event.key)
 
     def draw(self):
-        pass
+        self.screen.fill((62, 86, 183))
+        pygame.display.flip()
 
 
     def run(self):

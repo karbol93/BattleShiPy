@@ -65,7 +65,6 @@ class Menu:
             self.cursor_move_down()
         elif key == pygame.K_RETURN:
             self.enter_key_event()
-            print("ENTER")
 
 
     def event_loop(self):

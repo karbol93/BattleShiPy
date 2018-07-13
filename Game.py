@@ -1,19 +1,26 @@
-import pygame
+import pygame, sys
 from DrawableObject import DrawableObject
 from GameBoard import GameBoard
 
 class Game:
 
-	def __init__(self):
+	SINGLE_PLAYER	= 0
+	MULTI_PLAYER 	= 1
+
+
+	def __init__(self, game_mode):
 		self.exit = False
 		self.screen = pygame.display.get_surface()
 		self.screen.fill((0, 0, 0))
 		self.drawableObjects = [ ]
 		self.userBoard = GameBoard()
 
+
 	def event_loop(self):
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
+				sys.exit(0)
+			elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
 				self.exit = True
 
 

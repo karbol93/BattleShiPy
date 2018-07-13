@@ -1,5 +1,4 @@
 import pygame, sys, os
-from Game import Game
 from Menu import Menu
 
 WINDOW_NAME = "BattleShiPy game"

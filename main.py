@@ -2,7 +2,7 @@ import pygame, sys, os
 from Menu import Menu
 
 WINDOW_NAME = "BattleShiPy game"
-SCREEN_SIZE = (550, 500)
+SCREEN_SIZE = (750, 500)
 FULLSCREEN = False
 
 if __name__ == "__main__":

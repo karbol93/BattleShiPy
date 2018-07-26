@@ -1,6 +1,7 @@
 import pygame, sys
 from DrawableObject import DrawableObject
 from GameBoard import GameBoard
+from ShipBox import ShipBox
 
 class Game:
 
@@ -14,6 +15,7 @@ class Game:
 		self.screen.fill((0, 0, 0))
 		self.drawableObjects = [ ]
 		self.userBoard = GameBoard()
+		self.shipBox = ShipBox()
 
 
 	def event_loop(self):
@@ -22,6 +24,8 @@ class Game:
 				sys.exit(0)
 			elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
 				self.exit = True
+			elif event.type == pygame.MOUSEBUTTONDOWN:
+				self.shipBox.shipSelect(event)
 
 
 	def update(self):
@@ -52,12 +56,21 @@ class Game:
 				x,y = field.x,field.y
 				self.screen.blit(img,(x,y))
 
+	def draw_shipBox(self):
+		for line in self.shipBox.ships:
+			ship, number = line[0], line[1]
+			image = pygame.transform.rotate(ship.image, ship.rotation)
+			self.screen.blit(image, (ship.x, ship.y))
+			font = pygame.font.SysFont("comicsansms", 10)
+			text = font.render("x" + str(number), True, (255, 0, 0))
+			self.screen.blit(text, (ship.x , ship.y))
 
 	def draw(self):
 		self.draw_background()
 		self.draw_gui()
 		self.draw_objects()
 		self.draw_userBoard()
+		self.draw_shipBox()
 		pygame.display.flip()
 
 

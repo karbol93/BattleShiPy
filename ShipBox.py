@@ -17,8 +17,8 @@ class ShipBox:
 
     def shipSelect(self,event):
         mx, my = event.pos
-        print("x = " + str(mx) + " y = " + str(my))
+        #print("x = " + str(mx) + " y = " + str(my))
 
         for i, ship in enumerate(self.ships):
-            if(mx > ship[0].x and my > ship[0].y and mx < ship[0].x *(i + 1) and my < ship[0].y + 50 ):
-                print("wybrano" + str(i))
+            if(mx > ship[0].x and my > ship[0].y and mx < ship[0].x +((1+i) * 50) and my < ship[0].y + 50 ):
+                #print("wybrano" + str(i))

@@ -2,6 +2,6 @@ import pygame
 from DrawableObject import DrawableObject
 
 class Boat(DrawableObject):
-	def __init__(self, x, y, rotation):
-		image = pygame.image.load('./boat.png')
-		super().__init__(image, x, y, rotation)
+	def __init__(self, imagePath, x, y, rotation):
+		self.image = pygame.image.load(imagePath)
+		super().__init__(self.image, x, y, rotation)

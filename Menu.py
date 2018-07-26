@@ -29,6 +29,8 @@ class Menu:
 
         if pygame.font.match_font('comicsansms'):
             self.font = pygame.font.SysFont("comicsansms", 18)
+        else:
+            self.font = pygame.font.SysFont(pygame.font.get_default_font(), 18)
 
 
     def cursor_move_up(self):

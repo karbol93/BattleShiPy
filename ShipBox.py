@@ -21,4 +21,5 @@ class ShipBox:
 
         for i, ship in enumerate(self.ships):
             if(mx > ship[0].x and my > ship[0].y and mx < ship[0].x +((1+i) * 50) and my < ship[0].y + 50 ):
+                pass
                 #print("wybrano" + str(i))

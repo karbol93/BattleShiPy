@@ -1,8 +1,11 @@
 import pygame
 
 class DrawableObject:
-	def __init__(self, imagePath, x, y, rotation):
-		self.image =  pygame.image.load(imagePath)
+	def __init__(self, image, x, y, rotation):
+		if type(image) is str:
+			self.image =  pygame.image.load(image)
+		else:
+			self.image = image
 		self.x = x
 		self.y = y
 		self.rotation = rotation

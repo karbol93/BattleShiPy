@@ -26,7 +26,9 @@ class GameShipContainer(DrawableObject):
 
     def shipSelected(self, event):
         mx, my = event.pos
-        print(self.ships)
+        mx = mx - self.x
+        my = my - self.y
+        print(mx, '\t', my)
 
         for i, ship in enumerate(self.ships):
             if(mx > ship[0].x and my > ship[0].y and mx < ship[0].x +((1+i) * 50) and my < ship[0].y + 50 ):
@@ -44,8 +46,7 @@ class GameShipContainer(DrawableObject):
         self.panel.blit(text, (((self.panel.get_width()/2) - (text.get_width()/2)), 10) )
         for line in self.ships:
             ship, number = line[0], line[1]
-            image = pygame.transform.rotate(ship.image, ship.rotation)
-            self.panel.blit(image, (ship.x, ship.y))
+            ship.draw(self.panel)
             text = self.font.render("x" + str(number), True, (255, 0, 0))
             self.panel.blit(text, (ship.x-20 , ship.y+9 ))
 

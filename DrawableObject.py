@@ -11,4 +11,5 @@ class DrawableObject:
 		self.rotation = rotation
 
 	def draw(self, surface):
+		self.image = pygame.transform.rotate(self.image, self.rotation)
 		surface.blit(self.image, (self.x, self.y))

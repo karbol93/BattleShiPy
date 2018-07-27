@@ -14,11 +14,9 @@ class Game:
 		self.exit = False
 		self.screen = pygame.display.get_surface()
 		self.screen.fill((0, 0, 0))
-		self.drawableObjects = [ ]
-		self.userBoard = GameBoard()
+		self.userBoard = GameBoard(0, 0)
 		self.shipBox = GameShipContainer(500, 40)
-		self.drawSelectedShip = False
-		self.flyingDutch = Boat("./res/img/boat_one_mast.png",0,0,0)
+		self.drawableObjects = [self.userBoard, self.shipBox]
 
 
 	def event_loop(self):
@@ -28,13 +26,16 @@ class Game:
 			elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
 				self.exit = True
 			elif event.type == pygame.MOUSEBUTTONDOWN:
+				#for drawableOject in drawableOject:
+					#if drawableOject.clicked():
+						#clickedObject = drawableOject.getClicked()
 				self.drawSelectedShip = self.shipBox.shipSelected(event)
 				self.flyingDutch = self.shipBox.getSelectedShip()
 			elif event.type == pygame.MOUSEBUTTONUP:
+				pass
 				self.drawSelectedShip = False
 			elif event.type == pygame.MOUSEMOTION:
-				if (self.drawSelectedShip):
-					self.flyingDutch.x, self.flyingDutch.y = event.pos
+				pass
 
 
 	def update(self):
@@ -46,20 +47,19 @@ class Game:
 
 
 	def draw_objects(self):
+		pass
+		'''
 		for object in self.drawableObjects:
 			image = pygame.transform.rotate(object.image, object.rotation)
 			imageRectangle = image.get_rect()
 			imageRectangle.center = object.image.get_rect().center
 			imageRectangle = imageRectangle.move(object.x, object.y)
 			self.screen.blit(image, imageRectangle)
-
+		'''
 
 	def draw_userBoard(self):
-		for fields in self.userBoard.getFields():
-			for field in fields:
-				img = field.image
-				x,y = field.x,field.y
-				self.screen.blit(img,(x,y))
+		self.userBoard.draw(self.screen)
+
 
 
 	def draw_shipBox(self):

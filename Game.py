@@ -1,7 +1,7 @@
 import pygame, sys
 from DrawableObject import DrawableObject
 from GameBoard import GameBoard
-from ShipBox import ShipBox
+from GameShipContainer import GameShipContainer
 from Boat import Boat
 
 class Game:
@@ -16,7 +16,7 @@ class Game:
 		self.screen.fill((0, 0, 0))
 		self.drawableObjects = [ ]
 		self.userBoard = GameBoard()
-		self.shipBox = ShipBox()
+		self.shipBox = GameShipContainer()
 		self.drawSelectedShip = False
 		self.flyingDutch = Boat("./res/img/boat_one_mast.png",0,0,0)
 

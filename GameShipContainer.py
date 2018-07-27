@@ -1,7 +1,7 @@
 from Boat import Boat
 import pygame
 
-class ShipBox:
+class GameShipContainer:
 
     def __init__(self):
         self.x = 500
@@ -24,4 +24,4 @@ class ShipBox:
                 return True
 
     def getSelectedShip(self):
-        return self.selectedShip
+        return Boat(self.selectedShip.image, self.selectedShip.x, self.selectedShip.y, self.selectedShip.rotation)

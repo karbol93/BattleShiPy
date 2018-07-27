@@ -24,4 +24,4 @@ class GameShipContainer:
                 return True
 
     def getSelectedShip(self):
-        return Boat(self.selectedShip.image, self.selectedShip.x, self.selectedShip.y, self.selectedShip.rotation)
+        return self.selectedShip

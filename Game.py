@@ -20,6 +20,7 @@ class Game:
 		self.drawSelectedShip = False
 		self.flyingDutch = Boat("./res/img/boat_one_mast.png",0,0,0)
 
+
 	def event_loop(self):
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -35,11 +36,8 @@ class Game:
 				if (self.drawSelectedShip):
 					self.flyingDutch.x, self.flyingDutch.y = event.pos
 
+
 	def update(self):
-		pass
-
-
-	def draw_gui(self):
 		pass
 
 
@@ -63,6 +61,7 @@ class Game:
 				x,y = field.x,field.y
 				self.screen.blit(img,(x,y))
 
+
 	def draw_shipBox(self):
 		for line in self.shipBox.ships:
 			ship, number = line[0], line[1]
@@ -72,12 +71,16 @@ class Game:
 			text = font.render("x" + str(number), True, (255, 0, 0))
 			self.screen.blit(text, (ship.x , ship.y))
 
+
+	def draw_gui(self):
+		self.draw_userBoard()
+		self.draw_shipBox()
+
+
 	def draw(self):
 		self.draw_background()
 		self.draw_gui()
 		self.draw_objects()
-		self.draw_userBoard()
-		self.draw_shipBox()
 		pygame.display.flip()
 
 

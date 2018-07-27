@@ -13,6 +13,10 @@ class GameShipContainer:
             [Boat("./res/img/boat_two_masts.png", self.x, self.y + 60, 90)   ,3],
             [Boat("./res/img/boat_three_masts.png", self.x, self.y + 120, 90),2],
             [Boat("./res/img/boat_four_masts.png", self.x, self.y + 180, 90) ,1]
+            [Boat(Boat.ONE_MAST, self.x, self.y, 90)         ,4],
+            [Boat(Boat.TWO_MASTS, self.x, self.y + 60, 90)   ,3],
+            [Boat(Boat.THREE_MASTS, self.x, self.y + 120, 90),2],
+            [Boat(Boat.FOUR_MASTS, self.x, self.y + 180, 90) ,1]
         ]
 
     def shipSelect(self,event):

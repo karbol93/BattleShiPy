@@ -34,9 +34,6 @@ class Game:
 			elif event.type == pygame.MOUSEMOTION:
 				if (self.drawSelectedShip):
 					self.flyingDutch.x, self.flyingDutch.y = event.pos
-					print("x = " + str(event.pos[0]) + " y = " + str(event.pos[1]))
-
-
 
 	def update(self):
 		pass
@@ -47,7 +44,7 @@ class Game:
 
 
 	def draw_background(self):
-		pass
+		self.screen.fill((0, 0, 0))
 
 
 	def draw_objects(self):

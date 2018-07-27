@@ -7,12 +7,13 @@ class GameShipContainer:
         self.x = 500
         self.y = 40
         self.selectedShip = None
+        self.panel = pygame.Surface((200, 300))
+        if pygame.font.match_font('comicsansms'):
+            self.font = pygame.font.SysFont("comicsansms", 18)
+        else:
+            self.font = pygame.font.SysFont(pygame.font.get_default_font(), 18)
 
         self.ships = [
-            [Boat("./res/img/boat_one_mast.png", self.x, self.y, 90)         ,4],
-            [Boat("./res/img/boat_two_masts.png", self.x, self.y + 60, 90)   ,3],
-            [Boat("./res/img/boat_three_masts.png", self.x, self.y + 120, 90),2],
-            [Boat("./res/img/boat_four_masts.png", self.x, self.y + 180, 90) ,1]
             [Boat(Boat.ONE_MAST, self.x, self.y, 90)         ,4],
             [Boat(Boat.TWO_MASTS, self.x, self.y + 60, 90)   ,3],
             [Boat(Boat.THREE_MASTS, self.x, self.y + 120, 90),2],
@@ -29,3 +30,11 @@ class GameShipContainer:
 
     def getSelectedShip(self):
         return self.selectedShip
+
+    def draw(self):
+        self.panel.fill((66, 134, 244))
+        text = self.font.render("Ship picker", True, (255, 0, 0))
+        self.panel.blit(text, (((self.panel.get_width()/2) - (text.get_width()/2)), 10) )
+
+    def getPanel(self):
+        return self.panel

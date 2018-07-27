@@ -16,7 +16,7 @@ class Game:
 		self.screen.fill((0, 0, 0))
 		self.drawableObjects = [ ]
 		self.userBoard = GameBoard()
-		self.shipBox = GameShipContainer()
+		self.shipBox = GameShipContainer(500, 40)
 		self.drawSelectedShip = False
 		self.flyingDutch = Boat("./res/img/boat_one_mast.png",0,0,0)
 
@@ -63,8 +63,7 @@ class Game:
 
 
 	def draw_shipBox(self):
-		self.shipBox.draw()
-		self.screen.blit(self.shipBox.getPanel(), (500, 40))
+		self.shipBox.draw(self.screen)
 
 
 	def draw_gui(self):

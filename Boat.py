@@ -15,7 +15,6 @@ class Boat(DrawableObject):
 	def __init__(self, boatSize, x, y, rotation):
 		self.boatSize = boatSize
 		imagePath = self.getImagePath()
-		print(imagePath)
 		super().__init__(imagePath, x, y, rotation)
 
 

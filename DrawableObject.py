@@ -9,3 +9,6 @@ class DrawableObject:
 		self.x = x
 		self.y = y
 		self.rotation = rotation
+
+	def draw(self, surface):
+		surface.blit(self.image, (self.x, self.y))

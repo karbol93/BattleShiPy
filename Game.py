@@ -2,6 +2,7 @@ import pygame, sys
 from DrawableObject import DrawableObject
 from GameBoard import GameBoard
 from ShipBox import ShipBox
+from Boat import Boat
 
 class Game:
 
@@ -16,7 +17,8 @@ class Game:
 		self.drawableObjects = [ ]
 		self.userBoard = GameBoard()
 		self.shipBox = ShipBox()
-
+		self.drawSelectedShip = False
+		self.flyingDutch = Boat("./res/img/boat_one_mast.png",0,0,0)
 
 	def event_loop(self):
 		for event in pygame.event.get():
@@ -25,7 +27,15 @@ class Game:
 			elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
 				self.exit = True
 			elif event.type == pygame.MOUSEBUTTONDOWN:
-				self.shipBox.shipSelect(event)
+				self.drawSelectedShip = self.shipBox.shipSelect(event)
+				self.flyingDutch = self.shipBox.getSelectedShip()
+			elif event.type == pygame.MOUSEBUTTONUP:
+				self.drawSelectedShip = False
+			elif event.type == pygame.MOUSEMOTION:
+				if (self.drawSelectedShip):
+					self.flyingDutch.x, self.flyingDutch.y = event.pos
+					print("x = " + str(event.pos[0]) + " y = " + str(event.pos[1]))
+
 
 
 	def update(self):

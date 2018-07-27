@@ -28,7 +28,7 @@ class Game:
 			elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
 				self.exit = True
 			elif event.type == pygame.MOUSEBUTTONDOWN:
-				self.drawSelectedShip = self.shipBox.shipSelect(event)
+				self.drawSelectedShip = self.shipBox.shipSelected(event)
 				self.flyingDutch = self.shipBox.getSelectedShip()
 			elif event.type == pygame.MOUSEBUTTONUP:
 				self.drawSelectedShip = False
@@ -63,13 +63,8 @@ class Game:
 
 
 	def draw_shipBox(self):
-		for line in self.shipBox.ships:
-			ship, number = line[0], line[1]
-			image = pygame.transform.rotate(ship.image, ship.rotation)
-			self.screen.blit(image, (ship.x, ship.y))
-			font = pygame.font.SysFont("comicsansms", 10)
-			text = font.render("x" + str(number), True, (255, 0, 0))
-			self.screen.blit(text, (ship.x , ship.y))
+		self.shipBox.draw()
+		self.screen.blit(self.shipBox.getPanel(), (500, 40))
 
 
 	def draw_gui(self):

@@ -14,7 +14,12 @@ class Boat(DrawableObject):
 
 	def __init__(self, boatSize, x, y, rotation):
 		self.boatSize = boatSize
+		imagePath = self.getImagePath()
+		print(imagePath)
+		super().__init__(imagePath, x, y, rotation)
 
+
+	def getImagePath(self):
 		if self.boatSize == self.ONE_MAST:
 			imagePath = oneMastPath
 		elif self.boatSize == self.TWO_MASTS:
@@ -25,5 +30,4 @@ class Boat(DrawableObject):
 			imagePath = fourMastsPath
 		else:
 			imagePath = oneMastPath
-
-		super().__init__(imagePath, x, y, rotation)
+		return imagePath
